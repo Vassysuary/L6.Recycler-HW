@@ -2,22 +2,21 @@ package ru.gb.course1.l6recycler_hw.ui;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
 import ru.gb.course1.l6recycler_hw.App;
 import ru.gb.course1.l6recycler_hw.R;
-import ru.gb.course1.l6recycler_hw.data.LocalDateTimeForTimeLine;
 import ru.gb.course1.l6recycler_hw.domain.ArticleRepository;
-import ru.gb.course1.l6recycler_hw.data.CacheArticleRepositoryImpl;
 import ru.gb.course1.l6recycler_hw.domain.TimeLineEntity;
-import ru.gb.course1.l6recycler_hw.utils.ContextUtils;
 
 public class MainActivity extends AppCompatActivity implements OnArticleListener {
 //    private final ArticleRepository articleRepository = new CacheArticleRepositoryImpl();
@@ -43,6 +42,9 @@ public class MainActivity extends AppCompatActivity implements OnArticleListener
         });
         articleRepository = App.get(this).getArticleRepo();
         initRecycler();
+        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(adapter);
+        ItemTouchHelper mItemTouchHelper = new ItemTouchHelper(callback);
+        mItemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
     private void initRecycler() {
@@ -54,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements OnArticleListener
         adapter.setData(articleRepository.getArticle());
         adapter.setOnDeleteClickListener(this);
     }
-
     @Override
     public void onDeleteArticle(TimeLineEntity timeLineEntity) {
         articleRepository.deleteArticle(timeLineEntity);
@@ -66,6 +67,13 @@ public class MainActivity extends AppCompatActivity implements OnArticleListener
         intent.putExtra(ArticleEditActivity.ARTICLE_EXTRA_KEY, timeLineEntity);
         startActivityForResult(intent, ARTICLE_REQUEST_CODE);
     }
+
+//    @Override
+//    public void onItemDismiss(TimeLineEntity timeLineEntity) {
+//        articleRepository.deleteArticle(timeLineEntity);
+//        adapter.setData(articleRepository.getArticle());
+//    }
+
     @Override
     public void onClickArticle(TimeLineEntity timeLineEntity) {
         Intent intent = new Intent(this, ArticleActivity.class);
