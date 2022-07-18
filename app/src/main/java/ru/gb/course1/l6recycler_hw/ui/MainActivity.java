@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements OnArticleListener
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+
         insertNewArticle = findViewById(R.id.ins_new_article_button);
         insertNewArticle.setOnClickListener(v -> {
             Intent intent = new Intent(this, ArticleNewActivity.class);

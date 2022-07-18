@@ -17,6 +17,7 @@ import ru.gb.course1.l6recycler_hw.domain.TimeLineEntity;
 
 public class ArticleEditActivity extends AppCompatActivity {
     private EditText articleEditText;
+    private EditText articleEditTitle;
     private Button saveButton;
     private Button backButton;
 
@@ -28,15 +29,18 @@ public class ArticleEditActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_edit_article);
 
-        articleEditText = findViewById(R.id.edit_text);
+        articleEditTitle = findViewById(R.id.activity_edit_article_title);
+        articleEditText = findViewById(R.id.activity_edit_article_text);
         TimeLineEntity timeLineEntity = getIntent().getParcelableExtra(ARTICLE_EXTRA_KEY);
+        articleEditTitle.setText(timeLineEntity.getArticleTitle());
         articleEditText.setText(timeLineEntity.getArticleText());
 
         saveButton = findViewById(R.id.save_button);
         saveButton.setOnClickListener(v -> {
             timeLineEntity.setArticleText(articleEditText.getText().toString());
+            timeLineEntity.setArticleTitle(articleEditTitle.getText().toString());
             App.get(this).getArticleRepo().replaceArticle(timeLineEntity);
-            String str = articleEditText.getText().toString();
+//            String str = articleEditText.getText().toString();
             setResult(RESULT_OK);
             finish();
         });

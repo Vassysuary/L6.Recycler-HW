@@ -7,7 +7,7 @@
     tools:context=".ui.MainActivity">
 
     <EditText
-        android:id="@+id/edit_text"
+        android:id="@+id/activity_edit_article_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:cursorVisible="true"
@@ -15,7 +15,18 @@
         android:textSize="41sp"
         android:ems="9"
         android:inputType="textMultiLine"
-        android:lines="12"
+        android:lines="3"
+        tools:text="Заголовок"/>
+    <EditText
+        android:id="@+id/activity_edit_article_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:cursorVisible="true"
+        android:gravity="center"
+        android:textSize="41sp"
+        android:ems="9"
+        android:inputType="textMultiLine"
+        android:lines="9"
         tools:text="Статья"/>
     <LinearLayout
         android:layout_width="match_parent"
