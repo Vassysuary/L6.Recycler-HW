@@ -1,5 +1,7 @@
 package ru.gb.course1.l6recycler_hw.data;
 
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +44,17 @@ public class CacheArticleRepositoryImpl implements ArticleRepository {
             }
         }
         throw new IllegalArgumentException("Нет такого элемента! Где нашёл?!");
+    }
+
+    public void deleteArticleItemDismiss(String articleID) {
+        String id = articleID;
+//        for (int i = 0; i < cache.size(); i++) {
+//            if (articleID.equals(cache.get(i).getArticleId())) {
+//                cache.remove(i);
+//                return;
+//            }
+//        }
+//        throw new IllegalArgumentException("Нет такого элемента0! Где нашёл?!");
     }
 
     private ArrayList<TimeLineEntity> createDummyArticlesData() {
