@@ -48,13 +48,13 @@ public class CacheArticleRepositoryImpl implements ArticleRepository {
 
     public void deleteArticleItemDismiss(String articleID) {
         String id = articleID;
-//        for (int i = 0; i < cache.size(); i++) {
-//            if (articleID.equals(cache.get(i).getArticleId())) {
-//                cache.remove(i);
-//                return;
-//            }
-//        }
-//        throw new IllegalArgumentException("Нет такого элемента0! Где нашёл?!");
+        for (int i = 0; i < cache.size(); i++) {
+            if (articleID.equals(cache.get(i).getArticleId())) {
+                cache.remove(i);
+                return;
+            }
+        }
+        throw new IllegalArgumentException("Нет такого элемента0! Где нашёл?!");
     }
 
     private ArrayList<TimeLineEntity> createDummyArticlesData() {

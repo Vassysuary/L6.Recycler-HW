@@ -50,10 +50,13 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineViewHolder> {
     }
 
     protected void onItemDismiss(int position) {
-//        String id = data.get(position).getArticleId();
+        String id = data.get(position).getArticleId();
 //        articleRepository.deleteArticle(data.get(position));
 //        articleRepository.deleteArticleItemDismiss(id);
-        data.remove(position);
-        notifyItemRemoved(position);
+//        articleRepository.deleteArticle(data);
+//        data.remove(position);
+//        notifyItemRemoved(position);
+
+        onArticleListener.onItemDismiss(id);
     }
 }

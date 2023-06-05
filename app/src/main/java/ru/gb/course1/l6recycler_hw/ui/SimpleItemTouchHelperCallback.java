@@ -1,6 +1,7 @@
 package ru.gb.course1.l6recycler_hw.ui;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -8,11 +9,12 @@ import ru.gb.course1.l6recycler_hw.App;
 import ru.gb.course1.l6recycler_hw.domain.ArticleRepository;
 import ru.gb.course1.l6recycler_hw.domain.TimeLineEntity;
 
-public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
+public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback  {
 
     private final TimeLineAdapter mAdapter;
     private ArticleRepository articleRepository;
-//    private TimeLineEntity timeLineEntity;
+    private TimeLineEntity timeLineEntity = new TimeLineEntity();
+    private OnArticleListener onArticleListener;
 
     public SimpleItemTouchHelperCallback(TimeLineAdapter mAdapter) {
         this.mAdapter = mAdapter;
@@ -48,5 +50,6 @@ public class SimpleItemTouchHelperCallback extends ItemTouchHelper.Callback {
 //        adapter.setData(articleRepository.getArticle());
 //        notifyDataSetChanged();
         mAdapter.onItemDismiss(viewHolder.getAdapterPosition());
+
     }
 }

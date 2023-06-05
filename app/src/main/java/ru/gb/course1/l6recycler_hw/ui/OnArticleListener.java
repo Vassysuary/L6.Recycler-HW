@@ -8,6 +8,6 @@ interface OnArticleListener {
     void onDeleteArticle(TimeLineEntity timeLineEntity);
     void onClickArticle(TimeLineEntity timeLineEntity);
     void onEditArticle(TimeLineEntity timeLineEntity);
-//    void onItemDismiss(TimeLineEntity timeLineEntity);
+    void onItemDismiss(String articleID);
 //    boolean onTouchEvent(MotionEvent event);
 }

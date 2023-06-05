@@ -68,11 +68,11 @@ public class MainActivity extends AppCompatActivity implements OnArticleListener
         startActivityForResult(intent, ARTICLE_REQUEST_CODE);
     }
 
-//    @Override
-//    public void onItemDismiss(TimeLineEntity timeLineEntity) {
-//        articleRepository.deleteArticle(timeLineEntity);
-//        adapter.setData(articleRepository.getArticle());
-//    }
+    @Override
+    public void onItemDismiss(String id) {
+        articleRepository.deleteArticleItemDismiss(id);
+        adapter.setData(articleRepository.getArticle());
+    }
 
     @Override
     public void onClickArticle(TimeLineEntity timeLineEntity) {
