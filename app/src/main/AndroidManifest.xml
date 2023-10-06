@@ -11,7 +11,7 @@
         android:name=".App"
         android:theme="@style/Theme.L6RecyclerHW">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,9 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.ArticleActivity"/>
-        <activity android:name=".ui.ArticleEditActivity"/>
-        <activity android:name=".ui.ArticleNewActivity"/>
+        <activity android:name=".ui.details.ArticleActivity"/>
+        <activity android:name=".ui.details.ArticleEditActivity"/>
+        <activity android:name=".ui.details.ArticleNewActivity"/>
     </application>
 
 </manifest>

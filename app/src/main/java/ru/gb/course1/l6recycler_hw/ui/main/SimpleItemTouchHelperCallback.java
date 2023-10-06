@@ -1,11 +1,9 @@
-package ru.gb.course1.l6recycler_hw.ui;
+package ru.gb.course1.l6recycler_hw.ui.main;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
-import ru.gb.course1.l6recycler_hw.App;
 import ru.gb.course1.l6recycler_hw.domain.ArticleRepository;
 import ru.gb.course1.l6recycler_hw.domain.TimeLineEntity;
 

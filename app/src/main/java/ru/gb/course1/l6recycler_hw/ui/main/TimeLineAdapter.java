@@ -1,4 +1,4 @@
-package ru.gb.course1.l6recycler_hw.ui;
+package ru.gb.course1.l6recycler_hw.ui.main;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,10 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import ru.gb.course1.l6recycler_hw.App;
 import ru.gb.course1.l6recycler_hw.domain.ArticleRepository;
 import ru.gb.course1.l6recycler_hw.domain.TimeLineEntity;
 
@@ -19,14 +17,6 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineViewHolder> {
     private List<TimeLineEntity> data;
     private OnArticleListener onArticleListener;
     private ArticleRepository articleRepository;
-
-    public void setOnDeleteClickListener(OnArticleListener onArticleListener){
-        this.onArticleListener = onArticleListener;
-    }
-    public void setData(List<TimeLineEntity> articles) {
-        data = articles;
-        notifyDataSetChanged();
-    }
 
     @NonNull
     @Override
@@ -58,5 +48,13 @@ public class TimeLineAdapter extends RecyclerView.Adapter<TimeLineViewHolder> {
 //        notifyItemRemoved(position);
 
         onArticleListener.onItemDismiss(id);
+    }
+    public void setData(List<TimeLineEntity> articles) {
+        data = articles;
+        notifyDataSetChanged();
+    }
+
+    public void setOnItemClickListener(OnArticleListener onArticleListener){
+        this.onArticleListener = onArticleListener;
     }
 }

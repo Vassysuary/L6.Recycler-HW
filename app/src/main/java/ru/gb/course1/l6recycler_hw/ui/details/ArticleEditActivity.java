@@ -1,4 +1,4 @@
-package ru.gb.course1.l6recycler_hw.ui;
+package ru.gb.course1.l6recycler_hw.ui.details;
 
 import android.content.Context;
 import android.os.Bundle;
