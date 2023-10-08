@@ -36,7 +36,6 @@ public class ArticleActivity extends AppCompatActivity {
         });
         backButton = findViewById(R.id.back_button);
         backButton.setOnClickListener((v -> {
-//            App.get(this).getArticleRepo().backArticle(timeLineEntity);
             finish();
         }));
     }

@@ -6,17 +6,22 @@ import androidx.fragment.app.Fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import ru.gb.course1.l6recycler_hw.R;
 import ru.gb.course1.l6recycler_hw.domain.ArticleRepository;
 import ru.gb.course1.l6recycler_hw.domain.TimeLineEntity;
 import ru.gb.course1.l6recycler_hw.ui.details.ArticleActivity;
 import ru.gb.course1.l6recycler_hw.ui.details.ArticleEditActivity;
+import ru.gb.course1.l6recycler_hw.ui.details.ArticleEditActivityFragment;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity
+        extends AppCompatActivity
+        implements ArticleListFragment.Controller, ArticleEditActivityFragment.Controller {
 //    private final ArticleRepository articleRepository = new CacheArticleRepositoryImpl();
     private ArticleRepository articleRepository;
     private static final int ARTICLE_REQUEST_CODE = 42;
+    private static final String TAG_EDIT_FRAGMENT = "TAG_EDIT_FRAGMENT";
 //    private RecyclerView recyclerView;
     private TimeLineAdapter adapter;
 //    private Button insertNewArticle;
@@ -27,43 +32,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+        if (savedInstanceState == null) {
+            Fragment articleListFragment = new ArticleListFragment();
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .add(R.id.activity_main__fragment_container, articleListFragment,TAG_EDIT_FRAGMENT)
+                    .commit();
+        }
+    }
+    @Override
+    public void articleEdit(TimeLineEntity timeLineEntity) {
+        Toast.makeText(this, timeLineEntity.getArticleText(), Toast.LENGTH_SHORT).show();
 
-        Fragment articleListFragment = new ArticleListFragment();
+        Fragment articleEditFragment =  ArticleEditActivityFragment.newInstance(timeLineEntity);
         getSupportFragmentManager()
                 .beginTransaction()
-                .add(R.id.activity_main__fragment_container, articleListFragment)
+                .replace(R.id.activity_main__fragment_container,articleEditFragment)
+                .addToBackStack(null)
                 .commit();
-
-//        insertNewArticle = findViewById(R.id.ins_new_article_button);
-//        insertNewArticle.setOnClickListener(v -> {
-//            Intent intent = new Intent(this, ArticleNewActivity.class);
-//            intent.putExtra(ArticleNewActivity.ARTICLE_EXTRA_KEY, timeLineEntity);
-//            startActivityForResult(intent, ARTICLE_REQUEST_CODE);
-//
-//        });
-//        articleRepository = App.get(this).getArticleRepo();
-//        initRecycler();
-//        ItemTouchHelper.Callback callback = new SimpleItemTouchHelperCallback(adapter);
-//        ItemTouchHelper mItemTouchHelper = new ItemTouchHelper(callback);
-//        mItemTouchHelper.attachToRecyclerView(recyclerView);
     }
 
-//    private void initRecycler() {
-//        recyclerView = findViewById(R.id.recycler_view);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//
-//        adapter = new TimeLineAdapter();
-//        recyclerView.setAdapter(adapter);
-//        adapter.setData(articleRepository.getArticle());
-//        adapter.setOnDeleteClickListener(this);
-//    }
-
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == ARTICLE_REQUEST_CODE && resultCode == RESULT_OK) {
-            adapter.setData(articleRepository.getArticle());
-        }
+    public void onEditArticle(TimeLineEntity timeLineEntity) {
+        getSupportFragmentManager().popBackStack();
+        ArticleListFragment articleListFragment = (ArticleListFragment) getSupportFragmentManager().findFragmentByTag(TAG_EDIT_FRAGMENT);
+        articleListFragment.onArticleEdit(timeLineEntity);
     }
 }

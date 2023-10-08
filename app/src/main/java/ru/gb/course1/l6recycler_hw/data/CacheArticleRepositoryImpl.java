@@ -12,6 +12,7 @@ public class CacheArticleRepositoryImpl implements ArticleRepository {
     public CacheArticleRepositoryImpl() {
         cache.addAll(createDummyArticlesData());
     }
+
     @Override
     public List<TimeLineEntity> getArticle() {
         return new ArrayList<>(cache);
@@ -25,12 +26,14 @@ public class CacheArticleRepositoryImpl implements ArticleRepository {
             iae.printStackTrace();
         }
     }
+
     @Override
     public void replaceArticle(TimeLineEntity timeLineEntity) {
         cache.set(findPosition(timeLineEntity), timeLineEntity);
     }
+
     @Override
-    public void addNewArticle(TimeLineEntity timeLineEntity){
+    public void addNewArticle(TimeLineEntity timeLineEntity) {
         cache.add(timeLineEntity);
     }
 
