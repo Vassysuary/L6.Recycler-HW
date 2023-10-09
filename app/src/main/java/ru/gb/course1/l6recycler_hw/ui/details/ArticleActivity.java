@@ -22,9 +22,9 @@ public class ArticleActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_article);
+        setContentView(R.layout.fragment_article_details);
 
-        articleTextView = findViewById(R.id.article_text_view);
+        articleTextView = findViewById(R.id.fragment_article_details__text_view);
         TimeLineEntity timeLineEntity = getIntent().getParcelableExtra(ARTICLE_EXTRA_KEY);
         articleTextView.setText(timeLineEntity.getArticleText());
 

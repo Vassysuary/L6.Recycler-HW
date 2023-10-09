@@ -58,7 +58,6 @@ public class ArticleEditActivityFragment extends Fragment {
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-//        getSupportActionBar().hide();
 
         articleEditTitle = view.findViewById(R.id.activity_edit_article_title);
         articleEditText = view.findViewById(R.id.activity_edit_article_text);
@@ -73,9 +72,7 @@ public class ArticleEditActivityFragment extends Fragment {
             timeLineEntity.setArticleTitle(articleEditTitle.getText().toString());
             App.get(getContext()).getArticleRepo().replaceArticle(timeLineEntity);
             controller.onEditArticle(timeLineEntity);
-////            String str = articleEditText.getText().toString();
-//            setResult(RESULT_OK);
-//            finish();
+
         });
         backButton = view.findViewById(R.id.back_button);
         backButton.setOnClickListener((v -> {

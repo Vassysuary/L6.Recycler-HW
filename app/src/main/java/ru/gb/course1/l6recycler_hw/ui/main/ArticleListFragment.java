@@ -37,12 +37,16 @@ public class ArticleListFragment extends Fragment {
     private TimeLineEntity timeLineEntity = new TimeLineEntity();
     private Controller controller;
 
-    public void onArticleEdit(TimeLineEntity timeLineEntity) {
+
+//    public void onArticleEdit(TimeLineEntity timeLineEntity) {
 //        adapter.setData(articleRepository.getArticle());
-    }
+//    }
 
     interface Controller {
         void articleEdit(TimeLineEntity timeLineEntity);
+        void articleDetails(TimeLineEntity timeLineEntity);
+
+//        void onDeleteDetailsArticle(TimeLineEntity timeLineEntity);
     }
 
     @Override
@@ -100,10 +104,11 @@ public class ArticleListFragment extends Fragment {
 
             @Override
             public void onClickArticle(TimeLineEntity timeLineEntity) {
-                Intent intent = new Intent(getContext(), ArticleActivity.class);
-                intent.putExtra(ArticleActivity.ARTICLE_EXTRA_KEY, timeLineEntity);
-                startActivityForResult(intent, ARTICLE_REQUEST_CODE);
+//                Intent intent = new Intent(getContext(), ArticleActivity.class);
+//                intent.putExtra(ArticleActivity.ARTICLE_EXTRA_KEY, timeLineEntity);
+//                startActivityForResult(intent, ARTICLE_REQUEST_CODE);
 //        Toast.makeText(this, timeLineEntity.getArticleTitle(), Toast.LENGTH_SHORT).show();
+                controller.articleDetails(timeLineEntity);
             }
 
             @Override
@@ -129,5 +134,8 @@ public class ArticleListFragment extends Fragment {
         if (requestCode == ARTICLE_REQUEST_CODE && resultCode == RESULT_OK) {
             adapter.setData(articleRepository.getArticle());
         }
+    }
+    public void onDeleteArticle(String articleId) {
+        adapter.setData(articleRepository.getArticle());
     }
 }
