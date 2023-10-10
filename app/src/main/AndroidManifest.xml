@@ -19,9 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.details.ArticleActivity"/>
-        <activity android:name=".ui.details.ArticleEditActivity"/>
-        <activity android:name=".ui.details.ArticleNewActivity"/>
     </application>
 
 </manifest>

@@ -15,9 +15,8 @@ import androidx.fragment.app.Fragment;
 import ru.gb.course1.l6recycler_hw.App;
 import ru.gb.course1.l6recycler_hw.R;
 import ru.gb.course1.l6recycler_hw.domain.TimeLineEntity;
-import ru.gb.course1.l6recycler_hw.ui.main.ArticleListFragment;
 
-public class ArticleEditActivityFragment extends Fragment {
+public class ArticleEditFragment extends Fragment {
 
     private static final String EDIT_ARG_KEY = "EDIT_ARG_KEY";
     private EditText articleEditText;
@@ -42,8 +41,8 @@ public class ArticleEditActivityFragment extends Fragment {
         }
     }
 
-    public static ArticleEditActivityFragment newInstance(TimeLineEntity timeLineEntity) {
-        ArticleEditActivityFragment fragment = new ArticleEditActivityFragment();
+    public static ArticleEditFragment newInstance(TimeLineEntity timeLineEntity) {
+        ArticleEditFragment fragment = new ArticleEditFragment();
         Bundle bundle = new Bundle();
         bundle.putParcelable("EDIT_ARG_KEY", timeLineEntity);
         fragment.setArguments(bundle);
@@ -60,13 +59,13 @@ public class ArticleEditActivityFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 
         articleEditTitle = view.findViewById(R.id.activity_edit_article_title);
-        articleEditText = view.findViewById(R.id.activity_edit_article_text);
+        articleEditText = view.findViewById(R.id.activity_edit__article_text);
 
         timeLineEntity = getArguments().getParcelable(EDIT_ARG_KEY);
         articleEditTitle.setText(timeLineEntity.getArticleTitle());
         articleEditText.setText(timeLineEntity.getArticleText());
 
-        saveButton = view.findViewById(R.id.save_button);
+        saveButton = view.findViewById(R.id.new_fragment__save_button);
         saveButton.setOnClickListener(v -> {
             timeLineEntity.setArticleText(articleEditText.getText().toString());
             timeLineEntity.setArticleTitle(articleEditTitle.getText().toString());
@@ -74,7 +73,7 @@ public class ArticleEditActivityFragment extends Fragment {
             controller.onEditArticle(timeLineEntity);
 
         });
-        backButton = view.findViewById(R.id.back_button);
+        backButton = view.findViewById(R.id.activity_edit__back_button);
         backButton.setOnClickListener((v -> {
           controller.onEditArticle(timeLineEntity);
         }));

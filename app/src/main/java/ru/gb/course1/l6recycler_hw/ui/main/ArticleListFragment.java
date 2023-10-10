@@ -22,9 +22,6 @@ import ru.gb.course1.l6recycler_hw.R;
 import ru.gb.course1.l6recycler_hw.data.CacheArticleRepositoryImpl;
 import ru.gb.course1.l6recycler_hw.domain.ArticleRepository;
 import ru.gb.course1.l6recycler_hw.domain.TimeLineEntity;
-import ru.gb.course1.l6recycler_hw.ui.details.ArticleActivity;
-import ru.gb.course1.l6recycler_hw.ui.details.ArticleEditActivity;
-import ru.gb.course1.l6recycler_hw.ui.details.ArticleNewActivity;
 
 public class ArticleListFragment extends Fragment {
 
@@ -45,8 +42,7 @@ public class ArticleListFragment extends Fragment {
     interface Controller {
         void articleEdit(TimeLineEntity timeLineEntity);
         void articleDetails(TimeLineEntity timeLineEntity);
-
-//        void onDeleteDetailsArticle(TimeLineEntity timeLineEntity);
+        void articleNew(TimeLineEntity timeLineEntity);
     }
 
     @Override
@@ -70,9 +66,10 @@ public class ArticleListFragment extends Fragment {
 
         insertNewArticle = view.findViewById(R.id.fragment_articles_list__ins_new_article_button);
         insertNewArticle.setOnClickListener(v -> {
-            Intent intent = new Intent(getContext(), ArticleNewActivity.class);
-            intent.putExtra(ArticleNewActivity.ARTICLE_EXTRA_KEY, timeLineEntity);
-            startActivityForResult(intent, ARTICLE_REQUEST_CODE);
+//            Intent intent = new Intent(getContext(), ArticleNewActivity.class);
+//            intent.putExtra(ArticleNewActivity.ARTICLE_EXTRA_KEY, timeLineEntity);
+//            startActivityForResult(intent, ARTICLE_REQUEST_CODE);
+            controller.articleNew(timeLineEntity);
         });
         articleRepository = App.get(view.getContext()).getArticleRepo();
 //        getArticleRepo();
@@ -134,8 +131,5 @@ public class ArticleListFragment extends Fragment {
         if (requestCode == ARTICLE_REQUEST_CODE && resultCode == RESULT_OK) {
             adapter.setData(articleRepository.getArticle());
         }
-    }
-    public void onDeleteArticle(String articleId) {
-        adapter.setData(articleRepository.getArticle());
     }
 }

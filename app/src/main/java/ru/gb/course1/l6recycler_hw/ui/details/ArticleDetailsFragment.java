@@ -26,8 +26,6 @@ public class ArticleDetailsFragment extends Fragment {
     public static final String FRAGMENT_DETAILS_EXTRA_KEY = "FRAGMENT_DETAILS_EXTRA_KEY";
 
     public interface Controller {
-//        void articleDetails(TimeLineEntity timeLineEntity);
-//        void onDeleteArticle(TimeLineEntity timeLineEntity);
         void onDeleteDetailsArticle(String articleId);
     }
 

@@ -9,11 +9,15 @@ import ru.gb.course1.l6recycler_hw.R;
 import ru.gb.course1.l6recycler_hw.domain.ArticleRepository;
 import ru.gb.course1.l6recycler_hw.domain.TimeLineEntity;
 import ru.gb.course1.l6recycler_hw.ui.details.ArticleDetailsFragment;
-import ru.gb.course1.l6recycler_hw.ui.details.ArticleEditActivityFragment;
+import ru.gb.course1.l6recycler_hw.ui.details.ArticleEditFragment;
+import ru.gb.course1.l6recycler_hw.ui.details.ArticleNewFragment;
 
 public class MainActivity
         extends AppCompatActivity
-        implements ArticleListFragment.Controller, ArticleEditActivityFragment.Controller, ArticleDetailsFragment.Controller {
+        implements ArticleListFragment.Controller,
+        ArticleEditFragment.Controller,
+        ArticleDetailsFragment.Controller,
+        ArticleNewFragment.Controller {
     //    private final ArticleRepository articleRepository = new CacheArticleRepositoryImpl();
     private ArticleRepository articleRepository;
     private static final int ARTICLE_REQUEST_CODE = 42;
@@ -41,7 +45,7 @@ public class MainActivity
     public void articleEdit(TimeLineEntity timeLineEntity) {
 //        Toast.makeText(this, timeLineEntity.getArticleText(), Toast.LENGTH_SHORT).show();
 
-        Fragment articleEditFragment = ArticleEditActivityFragment.newInstance(timeLineEntity);
+        Fragment articleEditFragment = ArticleEditFragment.newInstance(timeLineEntity);
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.activity_main__fragment_container, articleEditFragment)
@@ -60,16 +64,31 @@ public class MainActivity
     }
 
     @Override
+    public void articleNew(TimeLineEntity timeLineEntity) {
+        Fragment articleNewFragment = ArticleNewFragment.newInstanceNewArticle(timeLineEntity);
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.activity_main__fragment_container, articleNewFragment)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void onNewArticle(TimeLineEntity timeLineEntity) {
+        getSupportFragmentManager().popBackStack();
+    }
+
+    @Override
     public void onEditArticle(TimeLineEntity timeLineEntity) {
         getSupportFragmentManager().popBackStack();
-        ArticleListFragment articleListFragment = (ArticleListFragment) getSupportFragmentManager().findFragmentByTag(TAG_EDIT_FRAGMENT);
+//        ArticleListFragment articleListFragment = (ArticleListFragment) getSupportFragmentManager().findFragmentByTag(TAG_EDIT_FRAGMENT);
+//        if (articleListFragment == null) throw new IllegalStateException("articleListFragment not found.");
     }
 
     @Override
     public void onDeleteDetailsArticle(String articleId){
         getSupportFragmentManager().popBackStack();
-        ArticleListFragment articleListFragment = (ArticleListFragment) getSupportFragmentManager().findFragmentByTag(TAG_EDIT_FRAGMENT);
-        if (articleListFragment == null) throw new IllegalStateException("articleListFragment not found.");
-        articleListFragment.onDeleteArticle(articleId);
+//        ArticleListFragment articleListFragment = (ArticleListFragment) getSupportFragmentManager().findFragmentByTag(TAG_EDIT_FRAGMENT);
+//        if (articleListFragment == null) throw new IllegalStateException("articleListFragment not found.");
     }
 }
