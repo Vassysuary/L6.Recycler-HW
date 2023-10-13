@@ -31,5 +31,6 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:text="Вернуться"/>
+
     </LinearLayout>
 </LinearLayout>
