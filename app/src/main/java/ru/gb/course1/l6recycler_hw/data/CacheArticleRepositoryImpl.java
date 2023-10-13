@@ -5,7 +5,6 @@ import java.util.List;
 
 import ru.gb.course1.l6recycler_hw.domain.ArticleRepository;
 import ru.gb.course1.l6recycler_hw.domain.TimeLineEntity;
-import ru.gb.course1.l6recycler_hw.ui.ArticleEditActivity;
 
 public class CacheArticleRepositoryImpl implements ArticleRepository {
     private final List<TimeLineEntity> cache = new ArrayList<>();
@@ -13,6 +12,7 @@ public class CacheArticleRepositoryImpl implements ArticleRepository {
     public CacheArticleRepositoryImpl() {
         cache.addAll(createDummyArticlesData());
     }
+
     @Override
     public List<TimeLineEntity> getArticle() {
         return new ArrayList<>(cache);
@@ -26,12 +26,14 @@ public class CacheArticleRepositoryImpl implements ArticleRepository {
             iae.printStackTrace();
         }
     }
+
     @Override
     public void replaceArticle(TimeLineEntity timeLineEntity) {
         cache.set(findPosition(timeLineEntity), timeLineEntity);
     }
+
     @Override
-    public void addNewArticle(TimeLineEntity timeLineEntity){
+    public void addNewArticle(TimeLineEntity timeLineEntity) {
         cache.add(timeLineEntity);
     }
 
@@ -42,6 +44,17 @@ public class CacheArticleRepositoryImpl implements ArticleRepository {
             }
         }
         throw new IllegalArgumentException("Нет такого элемента! Где нашёл?!");
+    }
+
+    public void deleteArticleItemDismiss(String articleID) {
+        String id = articleID;
+        for (int i = 0; i < cache.size(); i++) {
+            if (articleID.equals(cache.get(i).getArticleId())) {
+                cache.remove(i);
+                return;
+            }
+        }
+        throw new IllegalArgumentException("Нет такого элемента0! Где нашёл?!");
     }
 
     private ArrayList<TimeLineEntity> createDummyArticlesData() {

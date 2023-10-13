@@ -4,10 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.main.MainActivity">
 
     <TextView
-        android:id="@+id/date_time"
+        android:id="@+id/new_fragment__date_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:cursorVisible="true"
@@ -18,34 +18,34 @@
         android:lines="1"
         tools:text="Дата/время"/>
     <EditText
-        android:id="@+id/edit_text_title"
+        android:id="@+id/new_fragment__edit_text_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:cursorVisible="true"
         android:gravity="center"
-        android:textSize="41sp"
-        android:ems="9"
+        android:textSize="35sp"
+        android:ems="15"
         android:inputType="textMultiLine"
         android:lines="2"
         android:text="Введите здесь заголовок"/>
 
     <EditText
-        android:id="@+id/edit_text"
+        android:id="@+id/new_fragment__edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:cursorVisible="true"
         android:gravity="center"
-        android:textSize="41sp"
-        android:ems="9"
+        android:textSize="35sp"
+        android:ems="15"
         android:inputType="textMultiLine"
-        android:lines="10"
+        android:lines="3"
         android:text="Введите здесь текст статьи"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/save_button"
+            android:id="@+id/new_fragment__save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -53,7 +53,7 @@
             android:text="Сохранить"/>
 
         <Button
-            android:id="@+id/cancel_button"
+            android:id="@+id/new_fragment__cancel_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"

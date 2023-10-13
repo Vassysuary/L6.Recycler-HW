@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.main.MainActivity">
 
     <EditText
         android:id="@+id/activity_edit_article_title"
@@ -15,10 +15,10 @@
         android:textSize="41sp"
         android:ems="9"
         android:inputType="textMultiLine"
-        android:lines="3"
+        android:lines="2"
         tools:text="Заголовок"/>
     <EditText
-        android:id="@+id/activity_edit_article_text"
+        android:id="@+id/activity_edit__article_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:cursorVisible="true"
@@ -26,14 +26,14 @@
         android:textSize="41sp"
         android:ems="9"
         android:inputType="textMultiLine"
-        android:lines="9"
+        android:lines="3"
         tools:text="Статья"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/save_button"
+            android:id="@+id/new_fragment__save_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
@@ -41,7 +41,7 @@
             android:text="Сохранить"/>
 
         <Button
-            android:id="@+id/back_button"
+            android:id="@+id/activity_edit__back_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"

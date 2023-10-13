@@ -1,10 +1,13 @@
-package ru.gb.course1.l6recycler_hw.ui;
+package ru.gb.course1.l6recycler_hw.ui.main;
+
+import android.view.MotionEvent;
 
 import ru.gb.course1.l6recycler_hw.domain.TimeLineEntity;
 
-interface OnArticleListener {
+public interface OnArticleListener {
     void onDeleteArticle(TimeLineEntity timeLineEntity);
     void onClickArticle(TimeLineEntity timeLineEntity);
     void onEditArticle(TimeLineEntity timeLineEntity);
-//    void onAddNewArticle(TimeLineEntity timeLineEntity);
+    void onItemDismiss(String articleID);
+//    boolean onTouchEvent(MotionEvent event);
 }
