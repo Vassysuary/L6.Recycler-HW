@@ -54,7 +54,7 @@ public class ArticleNewFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.activity_new_article, container, false);
+        return inflater.inflate(R.layout.new_fragment_article, container, false);
     }
 
     @Override
