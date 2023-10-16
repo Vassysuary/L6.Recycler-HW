@@ -36,7 +36,7 @@ public class MainActivity
             Fragment articleListFragment = new ArticleListFragment();
             getSupportFragmentManager()
                     .beginTransaction()
-                    .add(R.id.activity_main__fragment_container, articleListFragment, TAG_EDIT_FRAGMENT)
+                    .add(R.id.activity_main__main_fragment_container, articleListFragment, TAG_EDIT_FRAGMENT)
                     .commit();
         }
     }
@@ -48,7 +48,7 @@ public class MainActivity
         Fragment articleEditFragment = ArticleEditFragment.newInstance(timeLineEntity);
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main__fragment_container, articleEditFragment)
+                .replace(R.id.activity_main__main_fragment_container, articleEditFragment)
                 .addToBackStack(null)
                 .commit();
     }
@@ -58,7 +58,7 @@ public class MainActivity
         Fragment articleDetailsFragment = ArticleDetailsFragment.newInstanceDetails(timeLineEntity);
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main__fragment_container, articleDetailsFragment)
+                .replace(R.id.activity_main__second_fragment_container, articleDetailsFragment)
                 .addToBackStack(null)
                 .commit();
     }
@@ -68,7 +68,7 @@ public class MainActivity
         Fragment articleNewFragment = ArticleNewFragment.newInstanceNewArticle(timeLineEntity);
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.activity_main__fragment_container, articleNewFragment)
+                .replace(R.id.activity_main__main_fragment_container, articleNewFragment)
                 .addToBackStack(null)
                 .commit();
     }
