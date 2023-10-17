@@ -24,8 +24,7 @@ public class MainActivity
     private static final String TAG_EDIT_FRAGMENT = "TAG_EDIT_FRAGMENT";
     //    private RecyclerView recyclerView;
     private TimeLineAdapter adapter;
-//    private Button insertNewArticle;
-//    private TimeLineEntity timeLineEntity = new TimeLineEntity();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
